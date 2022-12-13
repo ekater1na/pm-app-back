@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY } from '../constants';
+import 'dotenv/config';
 
-export const signToken = (id: string, login: string) => {
+const SECRET_KEY = process.env.SECRET_KEY || '';
+
+export const signToken = (id: string, login: string) => {  
   return jwt.sign({ id, login }, SECRET_KEY, { expiresIn: '720m' });
 }
 
